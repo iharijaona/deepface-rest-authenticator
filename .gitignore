@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+**/__pycache__/
+models
+facial_registry
+.env
+.DS_Store
