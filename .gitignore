@@ -4,3 +4,4 @@ models
 facial_registry
 .env
 .DS_Store
+.idea
