@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  facematching-api:
+    container_name: facematching-api
+    image: registry.gitlab.com/iharijaona/deepface-rest:latest
+    restart: always
+    runtime: nvidia
+    command: python wsgi.py
+    ports:
+      - 8888:8888
+    env_file:
+      - .env
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    volumes:
+      - ./facial_registry:/app/facial_registry
+      - ./.deepface/weights:/root/.deepface/weights
