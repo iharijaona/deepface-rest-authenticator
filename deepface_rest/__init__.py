@@ -3,6 +3,9 @@
 
 from .config import Config
 
+__version_info__ = (0, 1, 0)
+__version__ = ".".join(map(str, __version_info__))
+
 
 def create_app():
     """Instantiation of the flask application"""
@@ -50,3 +53,6 @@ def create_app():
         return response
 
     return app
+
+
+__all__ = ["create_app", "__version_info__", "__version_info__"]
