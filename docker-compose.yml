@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  deepface-rest:
+    container_name: deepface-rest
+    image: registry.gitlab.com/iharijaona/deepface-rest:latest
+    build: 
+      context: ./
+    restart: always
+    runtime: nvidia
+    volumes:
+      - ./:/app
+      - ~/.deepface/weights:/root/.deepface/weights/
+    command: python wsgi.py
+    ports:
+      - '8888:8888'
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
